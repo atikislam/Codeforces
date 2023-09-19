@@ -1,0 +1,43 @@
+#include<bits/stdc++.h>
+
+using namespace std;
+#define ll long long
+#define endl "\n"
+#define INF 100000000
+#define abc "abcdefghijklmnopqrstuvwxyz"
+#define ABC "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+#define PI 3.1415926535897932384626433832795
+//define sort function
+#define asort(a) sort(a.begin(),a.end())
+#define rsort(a) sort(a.rbegin(),a.rend())
+#define gsort(a) sort(a.begin(),a.end(),greater<int>())
+#define issort(a) is_sorted(a.begin(),a.end())
+#define areverse(a) reverse(a.begin(),a.end())
+#define Faster ios_base::sync_with_stdio(false); cin.tie(NULL);
+// default define end
+void solve(){
+   ll n,a,q,ans=-1,plus=0,aa;
+   cin>>n>>a>>q;
+   aa=a;
+   for(int i=0;i<q;i++){
+      char x;cin>>x;
+      if(a==n)ans=1;
+      if(x=='+'){
+        a++;
+        plus++;
+      }
+      else a--;  
+   }
+   if(ans==1 || a==n)cout<<"YES"<<endl;
+   else if(aa+plus>=n)cout<<"MAYBE"<<endl;
+   else cout<<"NO"<<endl;
+}
+int main() {
+    Faster;
+    ll t=1;
+    cin>>t;
+    while(t--){
+        solve();
+    }
+    return 0;
+}
