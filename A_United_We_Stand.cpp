@@ -1,4 +1,5 @@
 #include<bits/stdc++.h>
+
 using namespace std;
 #define ll long long
 #define endl "\n"
@@ -8,56 +9,45 @@ using namespace std;
 #define PI 3.1415926535897932384626433832795
 //define sort function
 #define asort(a) sort(a.begin(),a.end())
-#define rsort(a) sort(a.rbegin(),a.rend())
 #define gsort(a) sort(a.begin(),a.end(),greater<int>())
 #define issort(a) is_sorted(a.begin(),a.end())
 #define areverse(a) reverse(a.begin(),a.end())
 #define Faster ios_base::sync_with_stdio(false); cin.tie(NULL);
 // default define end
 void solve(){
-   ll n;
-   cin>>n;
-   vector<ll>data,b,c;
-   set<ll>d;
-   for(int i=0;i<n;i++){
-      ll x;cin>>x;
-      data.push_back(x);
-      d.insert(x);
-   }
-    asort(data);
-    int temp=0;
-   for(int i=0;i<n;i++){
-      if(data[i]==data[i+1]){
-        b.push_back(data[i]);
-      }else{
-        temp=i;
-        break;
-      }
-   }
-   for(int i=temp;i<n;i++){
-      c.push_back(data[i]);
-   }
-    if(d.size()>1){
-        cout<<b.size()<<" "<<c.size()<<endl;
-        for(int i=0;i<b.size();i++){
-           cout<<b[i]<<" ";
-        }
-        cout<<endl;
-        for(int i=0;i<c.size();i++){
-           cout<<c[i]<<" ";
-        }
-    }else{
-        cout<<-1;
+    ll n;
+    cin>>n;
+    vector<ll>d_array;
+    for(int i=0;i<n;i++){
+       ll x;cin>>x;
+       d_array.push_back(x);
     }
-    cout<<endl;
+    asort(d_array);
+    int c=1;
+    for(int i=n-2;i>=0;i--){
+       if(d_array[n-1]==d_array[i])c++;
+       else break;
+    }
+    if(c==n)cout<<-1<<endl;
+    else{
+      cout<<n-c<<" "<<c<<endl;
+      for(int i=0;i<n-c;i++){
+         cout<<d_array[i]<<" ";
+      }
+      cout<<endl;
+      for(int i=n-c;i<n;i++){
+         cout<<d_array[i]<<" ";
+      }
+      cout<<endl;
+    }
+    
 }
 int main() {
     Faster;
-    ll t;
+    ll t=1;
     cin>>t;
     while(t--){
         solve();
     }
-    //solve();
-   return 0;
+    return 0;
 }

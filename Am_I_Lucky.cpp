@@ -1,0 +1,32 @@
+#include<bits/stdc++.h>
+
+using namespace std;
+#define ll long long
+#define endl "\n"
+#define abc "abcdefghijklmnopqrstuvwxyz"
+#define asort(a) sort(a.begin(),a.end())
+#define gsort(a) sort(a.begin(),a.end(),greater<int>())
+#define issort(a) is_sorted(a.begin(),a.end())
+#define areverse(a) reverse(a.begin(),a.end())
+#define Faster ios_base::sync_with_stdio(false); cin.tie(NULL);
+// default define end
+void solve(){
+    ll n,x,k,boy_remin,girl_remint,ans=0;
+    cin>>n>>x>>k;
+    boy_remin=x%k;
+    girl_remint=(n-x)%k;
+    if(boy_remin==0 || girl_remint==0){
+        cout<<max(boy_remin,girl_remint)<<endl;
+    }else{
+        cout<<abs(boy_remin-girl_remint)<<endl;
+    }
+}
+int main() {
+    Faster;
+    int t=1;
+    cin>>t;
+    while(t--){
+        solve();
+    }
+    return 0;
+}
