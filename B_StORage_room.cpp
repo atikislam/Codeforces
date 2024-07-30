@@ -5,22 +5,20 @@ using namespace std;
 void solve(){
     int n;
     cin>>n;
-    int matrix[n][n];
+    int m[n][n];
     vector<int>ans;
     for(int i=0;i<n;i++){
-        int p = 1073741823;
-        for(int j=0;j<n;j++){
-            cin>>matrix[i][j];
-            if(i==j)continue; 
-            p&=matrix[i][j];
-        }
-        ans.push_back(p);
+        int comon_bit=(1<<30)-1;
+       for(int j=0;j<n;j++){
+           cin>>m[i][j];
+           if(i!=j)comon_bit &=m[i][j];
+       }
+       ans.push_back(comon_bit);
     }
     for(int i=0;i<n;i++){
        for(int j=0;j<n;j++){
-           if(i!=j && matrix[i][j]!=(ans[i]|ans[j])){
-                cout<<"NO"<<endl;
-                return;
+           if(i!=j && m[i][j]!=(ans[i]|ans[j])){
+            cout<<"NO"<<endl;return;
            }
        }
     }
@@ -28,7 +26,6 @@ void solve(){
     for(int i=0;i<n;i++){
        cout<<ans[i]<<" ";
     }cout<<endl;
-    
 }
 int main() {
     ios_base::sync_with_stdio(false); cin.tie(NULL);

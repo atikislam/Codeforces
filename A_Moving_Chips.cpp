@@ -3,23 +3,30 @@ using namespace std;
 #define endl "\n"
 
 void solve(){
-    int n,k,ans=0,mx=0;
-    cin>>n>>k;
-    vector<int>a,b;
+    int n;
+    cin>>n;
+    vector<int>d_array;
     for(int i=0;i<n;i++){
        int x;cin>>x;
-       a.push_back(x);
+       d_array.push_back(x);
     }
+    int r=0;
+    for(int i=n-1;i>=0;i--){
+       if(d_array[i]==1){
+        r=i;
+        break;
+       }
+    }
+    int l=0;
     for(int i=0;i<n;i++){
-       int x;cin>>x;
-       b.push_back(x);
+       if(d_array[i]==1){
+        l=i;
+        break;
+       }
     }
-    int sum=0;
-    for(int i=1;i<=min(n,k);i++){
-       sum+=a[i-1];
-       mx=max(mx,b[i-1]);
-       int bi_mx=mx*(k-i);
-       ans=max(ans,sum+bi_mx);
+    int ans=0;
+    for(int i=l;i<=r;i++){
+       if(d_array[i]==0)ans++;
     }
     cout<<ans<<endl;
 }

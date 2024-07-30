@@ -3,12 +3,19 @@ using namespace std;
 #define endl "\n"
 
 void solve(){
-    long long a,b,xk,yk,xq,yq,ab_neg,ab_pos,ans=0;
+    int a,b,xk,yk,xq,yq,ans=0;
     cin>>a>>b>>xk>>yk>>xq>>yq;
-    if(a+b==xk+yk || a+b+a+b==xk+yk)ans++;
-    if(a+b==xq+yq || a+b+a+b==xq+yq)ans++;
+    int dx[]={a,-b,-b,-a,b,b,a,-a};
+    int dy[]={-b,a,-a,-b,-a,a,b,b};
+    set<pair<int,int>>xyk,xyq;
+    for(int i=0;i<8;i++){
+        xyk.insert({xk+dx[i],yk+dy[i]});
+        xyq.insert({xq+dx[i],yq+dy[i]});
+    }
+    for(auto it:xyk){
+        if(xyq.find(it)!=xyq.end())ans++;
+    }
     cout<<ans<<endl;
-
 
 }
 int main() {
